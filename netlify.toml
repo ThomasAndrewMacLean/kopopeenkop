@@ -1,0 +1,10 @@
+[build]
+  # This is the directory to change to before starting a build.
+  base    = "/dist"
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+  # This is the directory that you are publishing from (relative to root of your repo)
+  publish = "/"
+  # This will be your default build command
+  command = ""
+  # This is where we will look for your lambda functions
+  functions = ""
