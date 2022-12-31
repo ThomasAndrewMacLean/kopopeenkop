@@ -48,14 +48,19 @@
               method="post"
               enctype="multipart/form-data"
             >
-              <label for="kop">upload foto</label>
+              <label class="btn mt-1" for="kop">upload foto</label>
 
               <input type="file" name="kop" id="kop" />
 
-              <button id="upload">upload</button>
+              <!-- <button id="upload">upload</button> -->
             </form>
             <img id="previewImage" />
-            <button onclick="scrollToStep('step2')" class="btn primary">
+            <button
+              disabled
+              id="waitUpload"
+              onclick="scrollToStep('step2')"
+              class="btn primary"
+            >
               Volgende
             </button>
           </div>
@@ -163,6 +168,14 @@
             <p>
               Geniet van je kop en wij zorgen ervoor dat je kop op een kop komt.
             </p>
+            <div class="orderPreview">
+              <img
+              width="100"
+                id="orderPreviewImage"
+                src="images/white.jpg"
+                alt="voorbeeld van de kleur"
+              />
+            </div>
             <button onclick="scrollToStep('step2')" class="btn">Vorige</button>
             <button
               data-color="white"
@@ -170,7 +183,7 @@
               id="orderBtn"
               disabled
             >
-              Bestel
+              Afrekenen
             </button>
           </div>
         </div>

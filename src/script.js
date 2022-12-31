@@ -13,29 +13,34 @@ const form = document.getElementById("form");
 //   reader.readAsDataURL(image);
 // });
 
-form.addEventListener("submit", async (e) => {
+fileInput.addEventListener("change", async (e) => {
   e.preventDefault();
-  const formData = new FormData();
-  formData.append("myFile", fileInput.files[0]);
+  if (fileInput && fileInput.files && fileInput.files[0]) {
+    // turn on loader
+    setLoader(true);
+    const formData = new FormData();
+    formData.append("myFile", fileInput.files[0]);
 
-  const x = await fetch(
-    "https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image",
-    {
-      method: "POST",
-      body: formData,
-    }
-  );
+    const x = await fetch(
+      "https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
-  const y = await x.json();
+    const y = await x.json();
 
-  // set preview image
-  const previewImage = document.getElementById("previewImage");
-  previewImage.style.width = "auto";
-  previewImage.src = y.url;
-  const orderBtn = document.getElementById("orderBtn");
-  orderBtn.setAttribute("data-picture", y.id);
-  orderBtn.disabled = false;
-  console.log(y);
+    // set preview image
+    document.getElementById("waitUpload").disabled = false;
+    const previewImage = document.getElementById("previewImage");
+    previewImage.style.width = "auto";
+    previewImage.src = y.url;
+    const orderBtn = document.getElementById("orderBtn");
+    orderBtn.setAttribute("data-picture", y.id);
+    orderBtn.disabled = false;
+    setLoader(false);
+  }
 });
 const linkie =
   "https://kopopeenkop.myshopify.com/cart/42401773191393:1?attributes[image_id]=";
@@ -53,6 +58,8 @@ const scrollToStep = (id) => {
 const setPreviewColor = (color) => {
   const previewImage = document.getElementById("colorPreviewImage");
   previewImage.src = "images/" + color + ".jpg";
+  const orderPreviewImage = document.getElementById("orderPreviewImage");
+    orderPreviewImage.src = "images/" + color + ".jpg";
   const orderBtn = document.getElementById("orderBtn");
   orderBtn.setAttribute("data-color", color);
 
@@ -75,6 +82,7 @@ document.getElementById("orderBtn").addEventListener("click", (e) => {
   // set loader
   const loader = document.getElementById("loader");
   loader.style.display = "flex";
+  setLoader(true);
   const orderBtn = document.getElementById("orderBtn");
   orderBtn.disabled = true;
 
@@ -82,3 +90,12 @@ document.getElementById("orderBtn").addEventListener("click", (e) => {
   const color = e.target.getAttribute("data-color");
   window.location.href = linkie + pictureId + "&attributes[color]=" + color;
 });
+
+const setLoader = (show) => {
+  const loader = document.getElementById("loader");
+  if (show) {
+    loader.style.display = "flex";
+  } else {
+    loader.style.display = "none";
+  }
+};
