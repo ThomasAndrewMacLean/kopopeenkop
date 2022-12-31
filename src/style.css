@@ -159,6 +159,31 @@ footer {
   font-size: 4rem;
   align-items: center;
 }
+.mt-1 {
+  margin-top: 1rem;
+}
+details {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+summary {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 100;
+  font-family: inherit;
+  color: #000;
+  /* text-decoration: underline; */
+  /* display: inline-block; */
+  white-space: pre;
+ 
+  padding-bottom: 0.5rem;
+}
+
+/* style open details */
+details[open] summary {
+  font-weight: bold;
+}
+
 /* media queries */
 @media (max-width: 768px) {
   .hero .container {
