@@ -81,6 +81,7 @@
 
               <button id="upload">upload</button>
             </form>
+            <img id="previewImage" />
             <button onclick="scrollToStep('step2')" class="btn">
               Volgende
             </button>
@@ -94,24 +95,94 @@
             </p>
 
             radio buttons
-            <div class="colors">
-              <input type="radio" name="color" id="red" value="red" />
-              <label for="red">rood</label>
-              <input type="radio" name="color" id="blue" value="blue" />
-              <label for="blue">blauw</label>
-
-              <input type="radio" name="color" id="yellow" value="yellow" />
-              <label for="yellow">geel</label>
-              <input type="radio" name="color" id="orange" value="orange" />
-              <label for="orange">oranje</label>
-
-              <input type="radio" name="color" id="black" value="black" />
-              <label for="black">zwart</label>
-              <input type="radio" name="color" id="white" value="white" />
-              <label for="white">wit</label>
-              <input type="radio" name="color" id="pink" value="pink" />
-              <label for="pink">roze</label>
+            <div class="colorWrap">
+              <div class="colors">
+                <div class="">
+                  <input
+                    onchange="setPreviewColor('red')"
+                    type="radio"
+                    name="color"
+                    id="red"
+                    value="red"
+                  />
+                  <label for="red">rood</label>
+                </div>
+                <div>
+                  <input
+                    onchange="setPreviewColor('blue')"
+                    type="radio"
+                    name="color"
+                    id="blue"
+                    value="blue"
+                  />
+                  <label for="blue">blauw</label>
+                </div>
+                <div>
+                  <input
+                    onchange="setPreviewColor('yellow')"
+                    type="radio"
+                    name="color"
+                    id="yellow"
+                    value="yellow"
+                  />
+                  <label for="yellow">geel</label>
+                </div>
+                <div>
+                  <input
+                    onchange="setPreviewColor('orange')"
+                    type="radio"
+                    name="color"
+                    id="orange"
+                    value="orange"
+                  />
+                  <label for="orange">oranje</label>
+                </div>
+                <div>
+                  <input
+                    onchange="setPreviewColor('black')"
+                    type="radio"
+                    name="color"
+                    id="black"
+                    value="black"
+                  />
+                  <label for="black">zwart</label>
+                </div>
+                <div>
+                  <input
+                    onchange="setPreviewColor('white')"
+                    checked
+                    type="radio"
+                    name="color"
+                    id="white"
+                    value="white"
+                  />
+                  <label for="white">wit</label>
+                </div>
+                <div>
+                  <input
+                    onchange="setPreviewColor('pink')"
+                    type="radio"
+                    name="color"
+                    id="pink"
+                    value="pink"
+                  />
+                  <label for="pink">roze</label>
+                </div>
+              </div>
+              <div class="colorPreview">
+                <img
+                  width="100"
+                  id="colorPreviewImage"
+                  src="images/white.jpg"
+                  alt="voorbeeld van de kleur"
+                />
+              </div>
             </div>
+
+            <button onclick="scrollToStep('step1')" class="btn">Vorige</button>
+            <button onclick="scrollToStep('step3')" class="btn">
+              Volgende
+            </button>
           </div>
           <div id="step3" class="step">
             <div class="stepcounter">3/3</div>
@@ -119,6 +190,7 @@
             <p>
               Geniet van je kop en wij zorgen ervoor dat je kop op een kop komt.
             </p>
+            <button onclick="scrollToStep('step2')" class="btn">Vorige</button>
             <button disabled class="btn">Bestel</button>
           </div>
         </div>

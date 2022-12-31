@@ -30,12 +30,7 @@ section {
   max-width: 750px;
   margin: 0 auto;
 }
-.colors {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 .steps {
   display: flex;
   overflow-x: scroll;
@@ -84,7 +79,11 @@ section {
   background-color: #000;
   color: #fff;
 }
-
+.btn:disabled {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
 h1 {
   font-size: 3rem;
 
@@ -104,4 +103,31 @@ footer {
   color: #fff;
   padding: 20px 0;
   text-align: center;
+}
+.colors {
+  /* 3x3 grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.colorWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#colorPreviewImage {
+  /* flip images */
+  transform: scaleX(-1);
+}
+
+#previewImage {
+  display: block;
+  margin: auto;
+  height: 300px;
+  width: auto;
 }

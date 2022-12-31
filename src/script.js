@@ -27,14 +27,23 @@ form.addEventListener("submit", async (e) => {
   );
 
   const y = await x.json();
+
+  // set preview image
+  document.getElementById("previewImage").src = y.url;
   console.log(y);
 });
 
 const scrollToStep = (id) => {
+  const steps = document.querySelector(".steps");
   const step = document.getElementById(id);
-  step.scrollIntoView({
+
+  steps.scrollTo({
+    left: step.offsetLeft,
     behavior: "smooth",
-    block: "nearest",
-    inline: "center",
   });
+};
+
+const setPreviewColor = (color) => {
+  const previewImage = document.getElementById("colorPreviewImage");
+  previewImage.src = "images/" + color + ".jpg";
 };
