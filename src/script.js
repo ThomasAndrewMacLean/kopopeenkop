@@ -30,6 +30,8 @@ form.addEventListener("submit", async (e) => {
 
   // set preview image
   document.getElementById("previewImage").src = y.url;
+  // set the id on the href
+    document.getElementById("downloadLink").href = y.url;
   console.log(y);
 });
 

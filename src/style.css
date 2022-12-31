@@ -147,4 +147,10 @@ footer {
     width: 80%;
     height: auto;
   }
+  .col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
 }
