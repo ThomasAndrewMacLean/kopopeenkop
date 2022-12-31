@@ -131,3 +131,20 @@ footer {
   height: 300px;
   width: auto;
 }
+
+/* media queries */
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column;
+  }
+
+  .colors {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  #previewImage {
+    width: 80%;
+    height: auto;
+  }
+}
