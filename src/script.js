@@ -2,16 +2,16 @@ console.log("😃");
 const fileInput = document.getElementById("kop");
 const preview = document.getElementById("preview");
 const form = document.getElementById("form");
-fileInput.addEventListener("change", (e) => {
-  const image = fileInput.files[0];
-  console.log(image);
-  var reader = new FileReader();
+// fileInput.addEventListener("change", (e) => {
+//   const image = fileInput.files[0];
+//   console.log(image);
+//   var reader = new FileReader();
 
-  reader.onload = function (e) {
-    preview.setAttribute("src", e.target.result);
-  };
-  reader.readAsDataURL(image);
-});
+//   reader.onload = function (e) {
+//     preview.setAttribute("src", e.target.result);
+//   };
+//   reader.readAsDataURL(image);
+// });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -29,3 +29,12 @@ form.addEventListener("submit", async (e) => {
   const y = await x.json();
   console.log(y);
 });
+
+const scrollToStep = (id) => {
+  const step = document.getElementById(id);
+  step.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest",
+    inline: "center",
+  });
+};

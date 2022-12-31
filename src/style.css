@@ -1,4 +1,107 @@
+/* RESET CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 body {
-  /* background-color: red; */
   font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.hero {
+  background-color: #f5f5f5;
+}
+.hero .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+section {
+  padding: 3rem 0;
+}
+.container {
+  width: 95%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.colors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.steps {
+  display: flex;
+  overflow-x: scroll;
+  /* scroll snap */
+  scroll-snap-type: x mandatory;
+  /* hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.steps::-webkit-scrollbar {
+  display: none;
+}
+.step {
+  padding: 3rem;
+  flex: 1 0 100%;
+  text-align: center;
+  /* scroll snap */
+  scroll-snap-align: center;
+}
+.center {
+  text-align: center;
+}
+/* FAQ */
+.faq {
+  background-color: #f5f5f5;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  /* white-space: pre; */
+  color: #000;
+  font-weight: 100;
+  font-family: inherit;
+  min-width: 200px;
+  text-align: center;
+}
+.btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+h1 {
+  font-size: 3rem;
+
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
 }

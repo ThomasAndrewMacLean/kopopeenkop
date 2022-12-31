@@ -15,18 +15,32 @@
   </head>
   <body>
     <main>
-      <h1>Kop op een kop</h1>
+      <section class="hero">
+        <div class="container">
+          <div class="col">
+            <h1>Kop op een kop</h1>
+            <a href="#order" class="btn mt-1">Bestel nu</a>
+          </div>
+          <div class="col">
+            <img height="350" src="images/mug.png" alt="kop" />
+          </div>
+        </div>
+      </section>
 
-      <p>
-        1kop (meervoud: koppen) (m) (van dieren en informeel van mensen) hoofd
+      <!-- <p>
+        1) kop (meervoud: koppen) (m) (van dieren en informeel van mensen) hoofd
         <br />
-        2kop (de; m; meervoud: koppen) 1 drinkkommetje
+        2) kop (de; m; meervoud: koppen) 1 drinkkommetje
       </p>
-      <button>bestel nu</button>
-
+      <button>bestel nu</button> -->
+      <!-- 
       <section>
-        <form id="form" action="https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image" method="post">
-        <label for="kop">upload foto</label>
+        <form
+          id="form"
+          action="https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image"
+          method="post"
+        >
+          <label for="kop">upload foto</label>
 
           <input type="file" name="kop" id="kop" />
 
@@ -38,8 +52,118 @@
           href="https://kopopeenkop.myshopify.com/cart/42401773191393:1?attributes[image_id]=12345"
           >Kopen</a
         >
+      </section> -->
+      <section id="order">
+        <div class="container center">
+          <h2>Bestel uw persoonlijke tas</h2>
+          <p>
+            Bestel nu uw persoonlijke tas en wij zorgen ervoor dat uw tas op een
+            tas komt.
+          </p>
+        </div>
+        <div class="steps">
+          <div id="step1" class="step">
+            <!-- <div class="stepcounter">1/3</div> -->
+            <h3>Upload een foto</h3>
+            <p>
+              Upload een foto van je kop en wij zorgen ervoor dat je kop op een
+              kop komt.
+            </p>
+            <form
+              id="form"
+              action="https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <label for="kop">upload foto</label>
+
+              <input type="file" name="kop" id="kop" />
+
+              <button id="upload">upload</button>
+            </form>
+            <button onclick="scrollToStep('step2')" class="btn">
+              Volgende
+            </button>
+          </div>
+          <div id="step2" class="step">
+            <div class="stepcounter">2/3</div>
+
+            <h3>Kies een kleur</h3>
+            <p>
+              Kies een kleur en wij zorgen ervoor dat je kop op een kop komt.
+            </p>
+
+            radio buttons
+            <div class="colors">
+              <input type="radio" name="color" id="red" value="red" />
+              <label for="red">rood</label>
+              <input type="radio" name="color" id="blue" value="blue" />
+              <label for="blue">blauw</label>
+
+              <input type="radio" name="color" id="yellow" value="yellow" />
+              <label for="yellow">geel</label>
+              <input type="radio" name="color" id="orange" value="orange" />
+              <label for="orange">oranje</label>
+
+              <input type="radio" name="color" id="black" value="black" />
+              <label for="black">zwart</label>
+              <input type="radio" name="color" id="white" value="white" />
+              <label for="white">wit</label>
+              <input type="radio" name="color" id="pink" value="pink" />
+              <label for="pink">roze</label>
+            </div>
+          </div>
+          <div id="step3" class="step">
+            <div class="stepcounter">3/3</div>
+            <h3>Geniet van je kop</h3>
+            <p>
+              Geniet van je kop en wij zorgen ervoor dat je kop op een kop komt.
+            </p>
+            <button disabled class="btn">Bestel</button>
+          </div>
+        </div>
+      </section>
+      <section class="faq">
+        <div class="container">
+          <h2>FAQ</h2>
+          <details>
+            <summary>Wat is Kop op een kop?</summary>
+            <p>
+              Kop op een kop is een webshop waar je een kop op een kop kan
+              kopen.
+            </p>
+          </details>
+
+          <!-- shipping -->
+          <details>
+            <summary>Wat zijn de verzendkosten?</summary>
+            <p>De verzendkosten zijn € 5,00</p>
+          </details>
+
+          <!-- payment -->
+          <details>
+            <summary>Wat zijn de betaalmethodes?</summary>
+            <p>
+              Je kan betalen met iDeal, creditcard, PayPal, Bancontact, Apple
+              Pay, Google Pay en Klarna.
+            </p>
+          </details>
+
+          <!-- returns -->
+          <details>
+            <summary>Wat zijn de retourvoorwaarden?</summary>
+            <p>
+              Je hebt 14 dagen de tijd om je bestelling te retourneren. Je kan
+              contact opnemen met de klantenservice om je bestelling te
+              retourneren.
+            </p>
+          </details>
+        </div>
       </section>
     </main>
+    <footer>
+      <p>© 2021 Kop op een kop</p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
