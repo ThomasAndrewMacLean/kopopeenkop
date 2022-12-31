@@ -29,11 +29,16 @@ form.addEventListener("submit", async (e) => {
   const y = await x.json();
 
   // set preview image
-  document.getElementById("previewImage").src = y.url;
-  // set the id on the href
-    document.getElementById("downloadLink").href = y.url;
+  const previewImage = document.getElementById("previewImage");
+  previewImage.style.width = "auto";
+  previewImage.src = y.url;
+  const orderBtn = document.getElementById("orderBtn");
+  orderBtn.setAttribute("data-picture", y.id);
+  orderBtn.disabled = false;
   console.log(y);
 });
+const linkie =
+  "https://kopopeenkop.myshopify.com/cart/42401773191393:1?attributes[image_id]=";
 
 const scrollToStep = (id) => {
   const steps = document.querySelector(".steps");
@@ -48,4 +53,18 @@ const scrollToStep = (id) => {
 const setPreviewColor = (color) => {
   const previewImage = document.getElementById("colorPreviewImage");
   previewImage.src = "images/" + color + ".jpg";
+  const orderBtn = document.getElementById("orderBtn");
+  orderBtn.setAttribute("data-color", color);
 };
+
+document.getElementById("orderBtn").addEventListener("click", (e) => {
+  // set loader
+  const loader = document.getElementById("loader");
+  loader.style.display = "flex";
+  const orderBtn = document.getElementById("orderBtn");
+  orderBtn.disabled = true;
+
+  const pictureId = e.target.getAttribute("data-picture");
+  const color = e.target.getAttribute("data-color");
+  window.location.href = linkie + pictureId + "&attributes[color]=" + color;
+});
