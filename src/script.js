@@ -55,6 +55,20 @@ const setPreviewColor = (color) => {
   previewImage.src = "images/" + color + ".jpg";
   const orderBtn = document.getElementById("orderBtn");
   orderBtn.setAttribute("data-color", color);
+
+  // change css variabel --primary-color
+  document.documentElement.style.setProperty("--primary-color", color);
+  let textColor = "white";
+  if (
+    color === "yellow" ||
+    color === "orange" ||
+    color === "pink" ||
+    color === "red" ||
+    color === "white"
+  ) {
+    textColor = "black";
+  }
+  document.documentElement.style.setProperty("--primary-color-text", textColor);
 };
 
 document.getElementById("orderBtn").addEventListener("click", (e) => {

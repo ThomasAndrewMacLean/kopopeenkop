@@ -5,6 +5,10 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+:root {
+  --primary-color: #000;
+  --primary-color-text: #fff;
+}
 
 body {
   font-family: "Nunito", sans-serif;
@@ -86,20 +90,14 @@ section {
 }
 
 .btn.primary {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--primary-color-text);
 }
 .btn.primary:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--primary-color-text);
+  color: var(--primary-color);
 }
 
-.btn.disabled {
-  background-color: #ccc;
-  color: #fff;
-  cursor: not-allowed;
-  pointer-events: none;
-}
 h1 {
   font-size: 3rem;
 
