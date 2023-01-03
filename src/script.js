@@ -58,8 +58,8 @@ const scrollToStep = (id) => {
 const setPreviewColor = (color) => {
   const previewImage = document.getElementById("colorPreviewImage");
   previewImage.src = "images/" + color + ".jpg";
-  const orderPreviewImage = document.getElementById("orderPreviewImage");
-    orderPreviewImage.src = "images/" + color + ".jpg";
+//   const orderPreviewImage = document.getElementById("orderPreviewImage");
+//     orderPreviewImage.src = "images/" + color + ".jpg";
   const orderBtn = document.getElementById("orderBtn");
   orderBtn.setAttribute("data-color", color);
 
