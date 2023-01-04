@@ -1,42 +1,5 @@
 console.log("😃", "☕️");
 
-const img = new Image();
-
-img.src =
-  "https://storage.googleapis.com/koppen/4a7ae190-a955-4add-b485-f5fed10f011b.png";
-
-img.onload = function () {
-  var iw = img.width;
-  var ih = img.height;
-
-  //alert(iw)
-
-  var xOffset = 70, //left padding
-    yOffset = 100; //top padding
-
-  var a = 83.0; //image width
-  var b = 24; //round ness
-
-  var scaleFactor = iw / (3 * a);
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  // draw vertical slices
-  for (var X = 0; X < iw; X += 1) {
-    var y = (b / a) * Math.sqrt(a * a - (X - a) * (X - a)); // ellipsis equation
-    ctx.drawImage(
-      img,
-      X * scaleFactor,
-      0,
-      iw / 1.5,
-      ih,
-      X + xOffset,
-      y + yOffset,
-      1,
-      174
-    );
-  }
-};
-
 const fileInput = document.getElementById("kop");
 const preview = document.getElementById("preview");
 const form = document.getElementById("form");
@@ -77,6 +40,41 @@ fileInput.addEventListener("change", async (e) => {
     const orderBtn = document.getElementById("orderBtn");
     orderBtn.setAttribute("data-picture", y.id);
     orderBtn.disabled = false;
+
+    const img = new Image();
+
+    img.src = y.url;
+    img.onload = function () {
+      var iw = img.width;
+      var ih = img.height;
+
+      //alert(iw)
+
+      var xOffset = 65, //left padding
+        yOffset = 100; //top padding
+
+      var a = 83.0; //image width
+      var b = 24; //round ness
+
+      var scaleFactor = iw / (3 * a);
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      // draw vertical slices
+      for (var X = 0; X < iw; X += 1) {
+        var y = (b / a) * Math.sqrt(a * a - (X - a) * (X - a)); // ellipsis equation
+        ctx.drawImage(
+          img,
+          X * scaleFactor,
+          0,
+          iw / 1.5,
+          ih,
+          X + xOffset,
+          y + yOffset,
+          1,
+          174
+        );
+      }
+    };
     setLoader(false);
   }
 });
