@@ -56,10 +56,13 @@
               <!-- <button id="upload">upload</button> -->
             </form>
             <img id="previewImage" />
+            <button onclick="removeBackgroud()" class="btn">
+              Verwijder achtergrond
+            </button>
             <button
               disabled
               id="waitUpload"
-              onclick="scrollToStep('step2')"
+              onclick="uploadFile()"
               class="btn primary"
             >
               Volgende
@@ -250,6 +253,14 @@
     <div id="loader">
       <div class="loader">Loading...</div>
     </div>
+    <script src="removebackground.js"></script>
     <script src="script.js"></script>
+
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2"></script>
+    <!-- Load BodyPix -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
+
+    <!-- remove background code -->
   </body>
 </html>

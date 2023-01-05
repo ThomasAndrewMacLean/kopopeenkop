@@ -3,78 +3,31 @@ console.log("😃", "☕️");
 const fileInput = document.getElementById("kop");
 const preview = document.getElementById("preview");
 const form = document.getElementById("form");
-// fileInput.addEventListener("change", (e) => {
-//   const image = fileInput.files[0];
-//   console.log(image);
-//   var reader = new FileReader();
 
-//   reader.onload = function (e) {
-//     preview.setAttribute("src", e.target.result);
-//   };
-//   reader.readAsDataURL(image);
-// });
+const removeBackgroud = () => {
+  const previewImage = document.getElementById("previewImage");
 
+  loadImage(previewImage.src);
+};
 fileInput.addEventListener("change", async (e) => {
   e.preventDefault();
+  console.log(fileInput.files);
   if (fileInput && fileInput.files && fileInput.files[0]) {
-    // turn on loader
     setLoader(true);
-    const formData = new FormData();
-    formData.append("myFile", fileInput.files[0]);
+    var fr = new FileReader();
+    fr.onload = function () {
+      const previewImage = document.getElementById("previewImage");
+      previewImage.style.width = "auto";
+      previewImage.src = fr.result;
 
-    const x = await fetch(
-      "https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+      loadImagePreview(fr.result);
 
-    const y = await x.json();
-
-    // set preview image
-    document.getElementById("waitUpload").disabled = false;
-    const previewImage = document.getElementById("previewImage");
-    previewImage.style.width = "auto";
-    previewImage.src = y.url;
-    const orderBtn = document.getElementById("orderBtn");
-    orderBtn.setAttribute("data-picture", y.id);
-    orderBtn.disabled = false;
-
-    const img = new Image();
-
-    img.src = y.url;
-    img.onload = function () {
-      var iw = img.width;
-      var ih = img.height;
-
-      //alert(iw)
-
-      var xOffset = 65, //left padding
-        yOffset = 100; //top padding
-
-      var a = 83.0; //image width
-      var b = 24; //round ness
-
-      var scaleFactor = iw / (3 * a);
-      var canvas = document.getElementById("canvas");
-      var ctx = canvas.getContext("2d");
-      // draw vertical slices
-      for (var X = 0; X < iw; X += 1) {
-        var y = (b / a) * Math.sqrt(a * a - (X - a) * (X - a)); // ellipsis equation
-        ctx.drawImage(
-          img,
-          X * scaleFactor,
-          0,
-          iw / 1.5,
-          ih,
-          X + xOffset,
-          y + yOffset,
-          1,
-          174
-        );
-      }
+      // clear input
+      fileInput.value = "";
     };
+    fr.readAsDataURL(fileInput.files[0]);
+    document.getElementById("waitUpload").disabled = false;
+
     setLoader(false);
   }
 });
@@ -89,6 +42,68 @@ const scrollToStep = (id) => {
     left: step.offsetLeft,
     behavior: "smooth",
   });
+};
+
+const uploadFile = async () => {
+  scrollToStep("step2");
+  const formData = new FormData();
+  // get file from image
+  const previewImage = document.getElementById("previewImage");
+  const file = await fetch(previewImage.src).then((r) => r.blob());
+  formData.append("myFile", file);
+
+  const x = await fetch(
+    "https://europe-west1-kopopeenkop.cloudfunctions.net/upload_image",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  const y = await x.json();
+  console.log(y);
+  const orderBtn = document.getElementById("orderBtn");
+  orderBtn.setAttribute("data-picture", y.id);
+  orderBtn.disabled = false;
+};
+
+const loadImagePreview = (url) => {
+  const img = new Image();
+  img.src = url;
+  img.onload = function () {
+    var iw = img.width;
+    var ih = img.height;
+
+    //alert(iw)
+
+    var xOffset = 65, //left padding
+      yOffset = 100; //top padding
+
+    var a = 83.0; //image width
+    var b = 24; //round ness
+
+    var scaleFactor = iw / (3 * a);
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    // clear ctx
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // draw vertical slices
+    for (var X = 0; X < iw; X += 1) {
+      var y = (b / a) * Math.sqrt(a * a - (X - a) * (X - a)); // ellipsis equation
+      ctx.drawImage(
+        img,
+        X * scaleFactor,
+        0,
+        iw / 1.5,
+        ih,
+        X + xOffset,
+        y + yOffset,
+        1,
+        174
+      );
+    }
+  };
 };
 
 const setPreviewColor = (color) => {
