@@ -199,10 +199,6 @@ details[open] summary {
     grid-template-rows: repeat(4, 1fr);
   }
 
-  #previewImage {
-    width: 80%;
-    height: auto;
-  }
   .col {
     display: flex;
     justify-content: center;
